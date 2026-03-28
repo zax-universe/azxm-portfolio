@@ -1,0 +1,6 @@
+# Blokir semua eksekusi PHP di folder uploads
+<FilesMatch "\.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+Options -Indexes -ExecCGI

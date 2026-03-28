@@ -1,0 +1,72 @@
+# ============================================================
+# Azaxm Portfolio CMS - Apache .htaccess
+# ============================================================
+
+Options -Indexes -ExecCGI
+ServerSignature Off
+
+# ── URL Rewriting ─────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Redirect root ke /public/index.php
+    RewriteRule ^$ public/index.php [L,R=301]
+</IfModule>
+
+# ── Block akses ke file sensitif ─────────────────────────────
+<FilesMatch "\.(sql|log|md|env|sh|bak|git|htpasswd)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# ── Block akses ke folder config & includes ───────────────────
+<IfModule mod_rewrite.c>
+    RewriteRule ^config/ - [F,L]
+    RewriteRule ^includes/ - [F,L]
+</IfModule>
+
+# ── Security Headers ──────────────────────────────────────────
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header unset Server
+    Header unset X-Powered-By
+</IfModule>
+
+# ── PHP Settings ──────────────────────────────────────────────
+<IfModule mod_php.c>
+    php_flag expose_php Off
+    php_flag display_errors Off
+    php_value upload_max_filesize 2M
+    php_value post_max_size 4M
+    php_value max_execution_time 30
+    php_value session.cookie_httponly 1
+    php_value session.use_strict_mode 1
+</IfModule>
+
+# ── Protect uploads folder (no PHP execution) ─────────────────
+<IfModule mod_rewrite.c>
+    RewriteRule ^assets/uploads/.*\.php$ - [F,L]
+</IfModule>
+
+# ── Charset & MIME ────────────────────────────────────────────
+AddDefaultCharset UTF-8
+
+# ── Compression ───────────────────────────────────────────────
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript
+</IfModule>
+
+# ── Caching untuk assets ──────────────────────────────────────
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png  "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType text/css   "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+</IfModule>

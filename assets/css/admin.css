@@ -1,0 +1,307 @@
+/* ============================================================
+   Azaxm Portfolio CMS - Admin Panel Stylesheet
+   ============================================================ */
+
+/* ── Admin Layout ────────────────────────────────────────── */
+.admin-body {
+    background: #070707;
+}
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ── Admin Sidebar ───────────────────────────────────────── */
+.admin-sidebar {
+    width: 240px;
+    min-height: 100vh;
+    background: var(--card);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    z-index: 100;
+    transition: transform var(--transition);
+}
+.admin-sidebar__brand {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+.admin-sidebar__nav {
+    flex: 1;
+    padding: 1rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.admin-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem 1rem;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+.admin-nav-link:hover {
+    background: rgba(99,102,241,0.08);
+    color: var(--text);
+}
+.admin-nav-link.active {
+    background: rgba(99,102,241,0.15);
+    color: var(--accent);
+}
+.admin-nav-link i { width: 16px; text-align: center; font-size: 0.85rem; }
+.admin-nav-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0.5rem 0;
+}
+.admin-sidebar__footer {
+    padding: 1rem;
+    border-top: 1px solid var(--border);
+}
+.admin-user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: var(--radius-sm);
+    background: var(--bg-2);
+}
+.admin-user-avatar {
+    width: 32px;
+    height: 32px;
+    background: var(--gradient);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: white;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+.admin-user-name { font-size: 0.85rem; font-weight: 600; }
+.admin-user-role { font-size: 0.75rem; color: var(--text-muted); }
+
+/* ── Admin Main Content ──────────────────────────────────── */
+.admin-main {
+    flex: 1;
+    margin-left: 240px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ── Admin Topbar ────────────────────────────────────────── */
+.admin-topbar {
+    height: 60px;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+.admin-page-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+}
+.admin-topbar-actions { display: flex; gap: 0.5rem; align-items: center; }
+
+/* ── Admin Content Area ──────────────────────────────────── */
+.admin-content {
+    flex: 1;
+    padding: 2rem 1.5rem;
+}
+
+/* ── Stat Cards (Admin Dashboard) ───────────────────────── */
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.dash-stat {
+    padding: 1.25rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.dash-stat__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(99,102,241,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+.dash-stat__value { font-size: 1.5rem; font-weight: 700; line-height: 1.2; }
+.dash-stat__label { font-size: 0.78rem; color: var(--text-muted); }
+
+/* ── Admin Table ─────────────────────────────────────────── */
+.admin-table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+}
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+.admin-table thead {
+    background: var(--bg-2);
+    border-bottom: 1px solid var(--border);
+}
+.admin-table th {
+    padding: 0.875rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+.admin-table td {
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: middle;
+}
+.admin-table tbody tr:last-child td { border-bottom: none; }
+.admin-table tbody tr:hover td { background: rgba(255,255,255,0.02); }
+
+/* ── Toggle Switch ───────────────────────────────────────── */
+.toggle-switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+.toggle-switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+.toggle-slider {
+    width: 42px;
+    height: 22px;
+    background: var(--border-2);
+    border-radius: 999px;
+    transition: background var(--transition-fast);
+    position: relative;
+}
+.toggle-slider::after {
+    content: '';
+    position: absolute;
+    top: 3px; left: 3px;
+    width: 16px; height: 16px;
+    background: white;
+    border-radius: 50%;
+    transition: transform var(--transition-fast);
+}
+.toggle-switch input:checked + .toggle-slider { background: var(--primary); }
+.toggle-switch input:checked + .toggle-slider::after { transform: translateX(20px); }
+
+/* ── Admin Form ──────────────────────────────────────────── */
+.admin-form-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+}
+.admin-form-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.875rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-light);
+}
+
+/* ── Skill level bar in admin table ─────────────────────── */
+.skill-level-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+.skill-level-bar__track {
+    flex: 1;
+    height: 4px;
+    background: var(--border-2);
+    border-radius: 999px;
+    overflow: hidden;
+}
+.skill-level-bar__fill {
+    height: 100%;
+    background: var(--gradient);
+    border-radius: 999px;
+}
+.skill-level-bar__pct {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    min-width: 36px;
+    text-align: right;
+}
+
+/* ── Badge status ────────────────────────────────────────── */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.status-badge--active   { background: rgba(16,185,129,0.12); color: #34d399; border: 1px solid rgba(16,185,129,0.25); }
+.status-badge--inactive { background: rgba(100,116,139,0.12); color: var(--text-muted); border: 1px solid var(--border); }
+.status-badge--unread   { background: rgba(99,102,241,0.12); color: var(--accent); border: 1px solid rgba(99,102,241,0.25); }
+
+/* ── Mobile Admin ────────────────────────────────────────── */
+.admin-mobile-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 900px) {
+    .admin-sidebar {
+        transform: translateX(-100%);
+    }
+    .admin-sidebar.is-open {
+        transform: translateX(0);
+        box-shadow: var(--shadow-lg);
+    }
+    .admin-main { margin-left: 0; }
+    .dashboard-stats { grid-template-columns: repeat(2, 1fr); }
+    .admin-mobile-toggle { display: flex; }
+}
+@media (max-width: 480px) {
+    .dashboard-stats { grid-template-columns: 1fr; }
+    .admin-content { padding: 1.25rem 1rem; }
+}

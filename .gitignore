@@ -1,0 +1,29 @@
+# Environment & Config sensitif
+config/database.php
+
+# Upload files (jangan push ke GitHub)
+assets/uploads/avatars/*
+assets/uploads/images/*
+!assets/uploads/avatars/.gitkeep
+!assets/uploads/images/.gitkeep
+
+# Script helper (hapus sebelum push)
+generate_password.php
+
+# Log files
+*.log
+*.err
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# PHP cache
+*.cache
